@@ -1,0 +1,82 @@
+[07-Jun-2024 16:09:32 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "theme_enqueue_styles" not found or invalid function name in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/script-loader.php(2265): do_action('wp_enqueue_scri...')
+#3 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(324): wp_enqueue_scripts('')
+#4 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#5 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#6 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(3050): do_action('wp_head')
+#7 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce/header.php(20): wp_head()
+#8 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(810): require_once('/Users/Kikomac/...')
+#9 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(745): load_template('/Users/Kikomac/...', true, Array)
+#10 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#11 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/front-page.php(3): get_header()
+#12 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template-loader.php(106): include('/Users/Kikomac/...')
+#13 /Users/Kikomac/Local Sites/koukaki/app/public/wp-blog-header.php(19): require_once('/Users/Kikomac/...')
+#14 /Users/Kikomac/Local Sites/koukaki/app/public/index.php(17): require('/Users/Kikomac/...')
+#15 {main}
+  thrown in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php on line 324
+[07-Jun-2024 16:11:19 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "theme_enqueue_styles" not found or invalid function name in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/script-loader.php(2265): do_action('wp_enqueue_scri...')
+#3 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(324): wp_enqueue_scripts('')
+#4 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#5 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#6 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(3050): do_action('wp_head')
+#7 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce/header.php(20): wp_head()
+#8 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(810): require_once('/Users/Kikomac/...')
+#9 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(745): load_template('/Users/Kikomac/...', true, Array)
+#10 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#11 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/front-page.php(3): get_header()
+#12 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template-loader.php(106): include('/Users/Kikomac/...')
+#13 /Users/Kikomac/Local Sites/koukaki/app/public/wp-blog-header.php(19): require_once('/Users/Kikomac/...')
+#14 /Users/Kikomac/Local Sites/koukaki/app/public/index.php(17): require('/Users/Kikomac/...')
+#15 {main}
+  thrown in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php on line 324
+[07-Jun-2024 16:11:21 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "theme_enqueue_styles" not found or invalid function name in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/script-loader.php(2265): do_action('wp_enqueue_scri...')
+#3 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(324): wp_enqueue_scripts('')
+#4 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#5 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#6 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(3050): do_action('wp_head')
+#7 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce/header.php(20): wp_head()
+#8 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(810): require_once('/Users/Kikomac/...')
+#9 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(745): load_template('/Users/Kikomac/...', true, Array)
+#10 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#11 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/front-page.php(3): get_header()
+#12 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template-loader.php(106): include('/Users/Kikomac/...')
+#13 /Users/Kikomac/Local Sites/koukaki/app/public/wp-blog-header.php(19): require_once('/Users/Kikomac/...')
+#14 /Users/Kikomac/Local Sites/koukaki/app/public/index.php(17): require('/Users/Kikomac/...')
+#15 {main}
+  thrown in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php on line 324
+[07-Jun-2024 16:13:23 UTC] PHP Parse error:  Unclosed '{' on line 3 in /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/functions.php on line 20
+[07-Jun-2024 16:13:23 UTC] PHP Parse error:  Unclosed '{' on line 3 in /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/functions.php on line 20
+[07-Jun-2024 16:13:36 UTC] PHP Parse error:  Unclosed '{' on line 12 in /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/functions.php on line 20
+[07-Jun-2024 16:13:36 UTC] PHP Parse error:  Unclosed '{' on line 12 in /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/functions.php on line 20
+[07-Jun-2024 16:13:38 UTC] PHP Parse error:  Unclosed '{' on line 12 in /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/functions.php on line 20
+[07-Jun-2024 16:13:38 UTC] PHP Parse error:  Unclosed '{' on line 12 in /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/functions.php on line 20
+[07-Jun-2024 16:14:15 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "theme_enqueue_styles" not found or invalid function name in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/script-loader.php(2265): do_action('wp_enqueue_scri...')
+#3 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(324): wp_enqueue_scripts('')
+#4 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#5 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#6 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(3050): do_action('wp_head')
+#7 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce/header.php(20): wp_head()
+#8 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(810): require_once('/Users/Kikomac/...')
+#9 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template.php(745): load_template('/Users/Kikomac/...', true, Array)
+#10 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#11 /Users/Kikomac/Local Sites/koukaki/app/public/wp-content/themes/foce-child/front-page.php(3): get_header()
+#12 /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/template-loader.php(106): include('/Users/Kikomac/...')
+#13 /Users/Kikomac/Local Sites/koukaki/app/public/wp-blog-header.php(19): require_once('/Users/Kikomac/...')
+#14 /Users/Kikomac/Local Sites/koukaki/app/public/index.php(17): require('/Users/Kikomac/...')
+#15 {main}
+  thrown in /Users/Kikomac/Local Sites/koukaki/app/public/wp-includes/class-wp-hook.php on line 324
