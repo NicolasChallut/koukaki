@@ -6,71 +6,67 @@ get_header();
     <main id="primary" class="site-main">
         
         <section class="banner scroll">
+            <!-- fallback attribut video -->
             <img class="image" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
             <video id="background-video" autoplay loop muted class="banner"   alt="vidéo d'animation démonstrative">
                 <source type="video/mp4" src="<?php echo get_template_directory_uri() . '/assets/images/video.mp4'; ?> " >
             </video>
         </section>
-        <section id="#story" class="story">
-            <h2>L'histoire</h2>
-            <article id="" class="story__article">
-                <p><?php echo get_theme_mod('story'); ?></p>
-            </article>
-            <?php
-            $args = array(
-                'post_type' => 'characters',
-                'posts_per_page' => -1,
-                'meta_key'  => '_main_char_field',
-                'orderby'   => 'meta_value_num',
-
-            );
-            $characters_query = new WP_Query($args);
-            ?>
-           <article id="characters-container">
+        <section id="story" class="story">
+    <h2>L'histoire</h2>
+    <article class="story__article">
+        <p><?php echo get_theme_mod('story'); ?></p>
+    </article>
+    <?php
+    $args = array(
+        'post_type' => 'characters',
+        'posts_per_page' => -1,
+        'meta_key'  => '_main_char_field',
+        'orderby'   => 'meta_value_num',
+    );
+    $characters_query = new WP_Query($args);
+    ?>
     <h3>Les personnages</h3>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide main-character">
+    <article id="characters" class="characters-container">
+        
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide main-character">
+                    <?php
+                    $main_character = $characters_query->posts[0];
+                    echo '<figure>';
+                    echo get_the_post_thumbnail($main_character->ID, 'full');
+                    echo '<figcaption>' . $main_character->post_title . '</figcaption>';
+                    echo '</figure>';
+                    $characters_query->next_post();
+                    ?>
+                </div>
                 <?php
-                $main_character = $characters_query->posts[0];
-                echo '<figure>';
-                echo get_the_post_thumbnail( $main_character->ID, 'full' );
-                echo '<figcaption>'. $main_character->post_title . '</figcaption>';
-                echo '</figure>';
-                $characters_query->next_post();
+                while ($characters_query->have_posts()) {
+                    $characters_query->the_post();
+                    echo '<div class="swiper-slide">';
+                    echo '<figure>';
+                    echo get_the_post_thumbnail(get_the_ID(), 'full');
+                    echo '<figcaption>';
+                    the_title();
+                    echo '</figcaption>';
+                    echo '</figure>';
+                    echo '</div>'; // End swiper-slide
+                }
                 ?>
             </div>
-            <?php
-            while ( $characters_query->have_posts() ) {
-                $characters_query->the_post();
-                echo '<div class="swiper-slide">';
-                echo '<figure>';
-                echo get_the_post_thumbnail( get_the_ID(), 'full' );
-                echo '<figcaption>';
-                the_title();
-                echo '</figcaption>';
-                echo '</figure>';
-                echo '</div>'; // End swiper-slide
-            }
-            ?>
+            <!-- Pagination (if needed) -->
+            <div class="swiper-pagination"></div>
         </div>
-        <!-- Pagination (if needed) -->
-        <div class="swiper-pagination"></div>
-    </div>
-</article>
+    </article>
+    <article id="place">
+        <div>
+            <h3>Le Lieu</h3>
+            <p><?php echo get_theme_mod('place'); ?></p>
+        </div>
+    </article>
+</section>
 
-
-
-
-
-            <article id="place">
-                <div>
-                    <h3>Le Lieu</h3>
-                    <p><?php echo get_theme_mod('place'); ?></p>
-                </div>
-
-            </article>
-        </section>
 
 
         <section id="studio scroll">

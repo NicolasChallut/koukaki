@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: 'auto',
+      loop: true, // génére une boucle infinis 
       coverflowEffect: {
           rotate: 50,
           stretch: 0,
@@ -16,3 +17,4 @@ document.addEventListener('DOMContentLoaded', function() {
       },
   });
 });
+// trois éléments à la fois

@@ -1,0 +1,125 @@
+@charset "UTF-8";
+/*
+ Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
+ Theme URI: https://www.koukaki.local
+ Author: Studio Koukaki
+ Author URI: https://www.koukaki.local
+ Template: foce
+ Description: Thème enfant à l'occasion de la nomination aux Oscars Shorts
+ Version: 0.1
+*/
+/* CSS animation fleurs */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Partir de 20px en dessous */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Arriver à sa position initiale */
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Partir de 20px au-dessus */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Arriver à sa position initiale */
+  }
+}
+@keyframes apparition {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* Gestion video background */
+#background-video {
+  min-height: 806px;
+  width: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* /Gestion video */
+p::after,
+h2::after,
+#studio h2::before,
+#colophon::before,
+#colophon::after,
+.story__article::after,
+ul::after {
+  animation: fadeInUp 4s ease-out forwards, rotation 5s linear infinite;
+}
+
+.story__article::before,
+.banner img,
+#place {
+  animation: fadeInUp 4s ease-out forwards;
+}
+
+.banner {
+  animation: fadeInDown 4s ease-out forwards;
+}
+
+/*
+h2 {
+  animation: apparition 4s ease-out forwards;
+}
+*/
+/* FIN CSS animation fleurs */
+/* Animation nuages */
+#place {
+  background-image: url(./images/big_cloud.png), url(./images/little_cloud.png);
+  background-repeat: no-repeat;
+}
+
+/* FIN CSS animation nuages */
+/* CSS Swipper */
+.characters-title {
+  margin-bottom: 20px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: auto;
+  padding-bottom: 40px; /* Pour la pagination si besoin */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.main-character {
+  margin-bottom: 20px;
+}
+
+figure {
+  margin: 0;
+  text-align: center; /* Centrer le contenu des figures */
+}
+
+.swiper-pagination {
+  bottom: 10px;
+}
