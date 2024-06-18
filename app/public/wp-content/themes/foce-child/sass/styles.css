@@ -8,7 +8,9 @@
  Description: Thème enfant à l'occasion de la nomination aux Oscars Shorts
  Version: 0.1
 */
-/* CSS animation fleurs */
+/* Variables pour les transformations */
+/* Mixins pour les animations */
+/* Inclure les animations */
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -94,32 +96,28 @@ h2 {
 
 /* FIN CSS animation nuages */
 /* CSS Swipper */
-.characters-title {
+#story .characters-title {
   margin-bottom: 20px;
 }
-
-.swiper-container {
+#story .swiper-container {
   width: 100%;
   height: auto;
   padding-bottom: 40px; /* Pour la pagination si besoin */
 }
-
-.swiper-slide {
+#story .swiper-container .swiper-wrapper .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
 }
-
-.main-character {
+#story .swiper-container .swiper-pagination {
+  bottom: 10px;
+}
+#story .main-character {
   margin-bottom: 20px;
 }
 
 figure {
   margin: 0;
   text-align: center; /* Centrer le contenu des figures */
-}
-
-.swiper-pagination {
-  bottom: 10px;
 }

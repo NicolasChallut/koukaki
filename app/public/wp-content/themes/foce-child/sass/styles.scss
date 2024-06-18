@@ -8,124 +8,154 @@
  Version: 0.1
 */
 
-/* CSS animation fleurs */
-@keyframes rotation {
+/* Variables pour les transformations */
+$rotate-start: 0deg;
+$rotate-end: 360deg;
+$fade-start: 0;
+$fade-end: 1;
+$translate-up-start: 20px;
+$translate-up-end: 0;
+$translate-down-start: -20px;
+$translate-down-end: 0;
+$translate-apparition-start: 50px;
+
+/* Mixins pour les animations */
+@mixin rotation-animation {
+  @keyframes rotation {
     from {
-      transform: rotate(0deg);
+      transform: rotate($rotate-start);
     }
     to {
-      transform: rotate(360deg);
+      transform: rotate($rotate-end);
     }
   }
-  
+}
+
+@mixin fadeInUp-animation {
   @keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translateY(20px); /* Partir de 20px en dessous */
+      opacity: $fade-start;
+      transform: translateY($translate-up-start); /* Partir de 20px en dessous */
     }
     to {
-      opacity: 1;
-      transform: translateY(0); /* Arriver à sa position initiale */
+      opacity: $fade-end;
+      transform: translateY($translate-up-end); /* Arriver à sa position initiale */
     }
   }
-  
+}
+
+@mixin fadeInDown-animation {
   @keyframes fadeInDown {
     from {
-      opacity: 0;
-      transform: translateY(-20px); /* Partir de 20px au-dessus */
+      opacity: $fade-start;
+      transform: translateY($translate-down-start); /* Partir de 20px au-dessus */
     }
     to {
-      opacity: 1;
-      transform: translateY(0); /* Arriver à sa position initiale */
+      opacity: $fade-end;
+      transform: translateY($translate-down-end); /* Arriver à sa position initiale */
     }
   }
-  
+}
+
+@mixin apparition-animation {
   @keyframes apparition {
     from {
-      transform: translateY(50px);
+      transform: translateY($translate-apparition-start);
     }
     to {
-      transform: translateY(0);
+      transform: translateY($translate-up-end);
     }
   }
-  
-  /* Gestion video background */
-  #background-video {
-    min-height: 806px;
-    width: auto;
-    object-fit: cover;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-  }
-  /* /Gestion video */
-  
-  p::after,
-  h2::after,
-  #studio h2::before,
-  #colophon::before,
-  #colophon::after,
-  .story__article::after,
-  ul::after {
-    animation: fadeInUp 4s ease-out forwards, rotation 5s linear infinite;
-  }
-  
-  .story__article::before,
-  .banner img,
-  #place {
-    animation: fadeInUp 4s ease-out forwards;
-  }
-  
-  .banner {
-    animation: fadeInDown 4s ease-out forwards;
-  }
-  
-  /*
-  h2 {
-    animation: apparition 4s ease-out forwards;
-  }
-  */
-  
-  /* FIN CSS animation fleurs */
-  
-  /* Animation nuages */
-  #place {
-    background-image: url(./images/big_cloud.png), url(./images/little_cloud.png);
-    background-repeat: no-repeat;
-  }
-  /* FIN CSS animation nuages */
-  
-  /* CSS Swipper */
+}
+
+/* Inclure les animations */
+@include rotation-animation;
+@include fadeInUp-animation;
+@include fadeInDown-animation;
+@include apparition-animation;
+
+/* Gestion video background */
+#background-video {
+  min-height: 806px;
+  width: auto;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* /Gestion video */
+
+p::after,
+h2::after,
+#studio h2::before,
+#colophon::before,
+#colophon::after,
+.story__article::after,
+ul::after {
+  animation: fadeInUp 4s ease-out forwards, rotation 5s linear infinite;
+}
+
+.story__article::before,
+.banner img,
+#place {
+  animation: fadeInUp 4s ease-out forwards;
+}
+
+.banner {
+  animation: fadeInDown 4s ease-out forwards;
+}
+
+/*
+h2 {
+  animation: apparition 4s ease-out forwards;
+}
+*/
+
+/* FIN CSS animation fleurs */
+
+/* Animation nuages */
+#place {
+  background-image: url(./images/big_cloud.png), url(./images/little_cloud.png);
+  background-repeat: no-repeat;
+}
+
+/* FIN CSS animation nuages */
+
+/* CSS Swipper */
+#story {
   .characters-title {
     margin-bottom: 20px;
   }
-  
+
   .swiper-container {
     width: 100%;
     height: auto;
     padding-bottom: 40px; /* Pour la pagination si besoin */
+
+    .swiper-wrapper {
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+      }
+    }
+
+    .swiper-pagination {
+      bottom: 10px;
+    }
   }
-  
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-  }
-  
+
   .main-character {
     margin-bottom: 20px;
   }
-  
-  figure {
-    margin: 0;
-    text-align: center; /* Centrer le contenu des figures */
-  }
-  
-  .swiper-pagination {
-    bottom: 10px;
-  }
-  
+}
+
+figure {
+  margin: 0;
+  text-align: center; /* Centrer le contenu des figures */
+}
