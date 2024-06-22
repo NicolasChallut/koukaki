@@ -1,82 +1,294 @@
-/*
- Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
- Theme URI: https://www.koukaki.local
- Author: Studio Koukaki
- Author URI: https://www.koukaki.local
- Template: foce
- Description: Thème enfant à l'occasion de la nomination aux Oscars Shorts
- Version: 0.1
-*/
+// Variables
+$primary-bg-color: #FFD5A2;
+$text-color: #000;
+$menu-bg-color: #FFF5E9; // Updated menu background color
+$hover-shadow-color: #FF5C00;
+$header-height: 60px;
+$menu-item-font-size: 64px; // Font size for menu items
 
-/* Variables pour les transformations */
-$rotate-start: 0deg;
-$rotate-end: 360deg;
-$fade-start: 0;
-$fade-end: 1;
-$translate-up-start: 20px;
-$translate-up-end: 0;
-$translate-down-start: -20px;
-$translate-down-end: 0;
-$translate-apparition-start: 50px;
+// Keyframes
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-/* Mixins pour les animations */
-@mixin rotation-animation {
-  @keyframes rotation {
-    from {
-      transform: rotate($rotate-start);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mixins
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($property, $duration, $ease) {
+  transition: $property $duration $ease;
+}
+
+// Global styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+// Header
+.header {
+  position: fixed;
+  z-index: 3;
+  width:  1440px;;
+  @include flexCenter;
+  justify-content: space-between;
+  background-color: $primary-bg-color;
+  padding: 10px 20px;
+  height: $header-height;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    .header__title {
+      position: relative;
+      flex-grow: 1;
+      text-align: center;
+      color: $text-color;
+      font-size: 24px;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      
     }
-    to {
-      transform: rotate($rotate-end);
+  }
+
+  &__burger {
+    cursor: pointer;
+    z-index: 4;
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .burger__line {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: $text-color;
+      @include transition(all, 0.3s, ease);
+    }
+
+    &.active {
+      .burger__line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .burger__line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .burger__line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    width: 100%;
+    height: calc(100% - #{$header-height});
+    background: $menu-bg-color; // Updated menu background color
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+    @include transition(transform, 0.3s, ease);
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    .nav__logo {
+      margin-bottom: 20px;
+      max-width: 150px;
+      position: relative;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      &::before {
+        left: -30px;
+        background-image: url('./assets/images/orchid.png');
+        animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+      }
+
+      &::after {
+        right: -30px;
+        background-image: url('./assets/images/orchid.png');
+        animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+      }
+    }
+
+    .nav__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+
+      li {
+        margin: 15px 0;
+        position: relative;
+        font-size: $menu-item-font-size; // Apply font size to menu items
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        // Images for each menu item
+        &:nth-child(1) {
+          &::before {
+            left: -30px;
+            background-image: url('./assets/images/blue_cat.png');
+          
+          }
+          &::after {
+            right: -30px;
+            background-image: url('./assets/images/Sunflower.png');
+            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+          }
+        }
+
+        &:nth-child(2) {
+          
+          &::after {
+            right: -30px;
+            background-image: url('./assets/images/random_flower.png');
+            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+          }
+        }
+
+        &:nth-child(3) {
+          &::before {
+            left: -30px;
+            background-image: url('./assets/images/flower.png');
+            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+          }
+          &::after {
+            right: -30px;
+            background-image: url('./assets/images/black_cat.png');
+          }
+        }
+
+        &:nth-child(4) {
+          &::before {
+            left: -30px;
+            background-image: url('./assets/images/orange_cat.png');
+            
+          }
+          &::after {
+            right: -30px;
+            background-image: url('./assets/images/Hibiscus.png');
+            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+          }
+        }
+
+        a {
+          color: #000; // Change link color to match new background
+          text-decoration: none;
+          position: relative;
+          transition: text-shadow 0.3s ease;
+
+          &:hover {
+            text-shadow: 0px 0px 14px $hover-shadow-color;
+          }
+        }
+      }
     }
   }
 }
 
-@mixin fadeInUp-animation {
-  @keyframes fadeInUp {
-    from {
-      opacity: $fade-start;
-      transform: translateY($translate-up-start); /* Partir de 20px en dessous */
-    }
-    to {
-      opacity: $fade-end;
-      transform: translateY($translate-up-end); /* Arriver à sa position initiale */
-    }
+// Main content
+.site-main {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+
+  section {
+    height: 1024px;
   }
 }
 
-@mixin fadeInDown-animation {
-  @keyframes fadeInDown {
-    from {
-      opacity: $fade-start;
-      transform: translateY($translate-down-start); /* Partir de 20px au-dessus */
-    }
-    to {
-      opacity: $fade-end;
-      transform: translateY($translate-down-end); /* Arriver à sa position initiale */
-    }
-  }
+figure {
+  margin: 0;
+  text-align: center;
 }
 
-@mixin apparition-animation {
-  @keyframes apparition {
-    from {
-      transform: translateY($translate-apparition-start);
-    }
-    to {
-      transform: translateY($translate-up-end);
-    }
-  }
+.characters-title {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Inclure les animations */
-@include rotation-animation;
-@include fadeInUp-animation;
-@include fadeInDown-animation;
-@include apparition-animation;
-
-/* Gestion video background */
+// Video background
 #background-video {
-  min-height: 806px;
+  min-height: 1024px;
   width: auto;
   object-fit: cover;
   position: fixed;
@@ -87,21 +299,17 @@ $translate-apparition-start: 50px;
   z-index: -1;
 }
 
-/* /Gestion video */
-
-p::after,
-h2::after,
-#studio h2::before,
-#colophon::before,
-#colophon::after,
-.story__article::after,
-ul::after {
-  animation: fadeInUp 4s ease-out forwards, rotation 5s linear infinite;
+.hidden {
+  display: none;
 }
 
-.story__article::before,
-.banner img,
-#place {
+// Element animations
+p::after, h2::after, #studio h2::before, #colophon::before, #colophon::after, .story__article::after, ul::after {
+  animation: fadeInUp 4s ease-out forwards,
+             rotation 5s linear infinite; // Ajouter l'animation de rotation;
+}
+
+.story__article::before, .banner img, #place {
   animation: fadeInUp 4s ease-out forwards;
 }
 
@@ -109,53 +317,7 @@ ul::after {
   animation: fadeInDown 4s ease-out forwards;
 }
 
-/*
-h2 {
-  animation: apparition 4s ease-out forwards;
-}
-*/
-
-/* FIN CSS animation fleurs */
-
-/* Animation nuages */
 #place {
-  background-image: url(./images/big_cloud.png), url(./images/little_cloud.png);
+  background-image: url(./assets/images/big_cloud.png), url(./assets/images/little_cloud.png);
   background-repeat: no-repeat;
-}
-
-/* FIN CSS animation nuages */
-
-/* CSS Swipper */
-#story {
-  .characters-title {
-    margin-bottom: 20px;
-  }
-
-  .swiper-container {
-    width: 100%;
-    height: auto;
-    padding-bottom: 40px; /* Pour la pagination si besoin */
-
-    .swiper-wrapper {
-      .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-      }
-    }
-
-    .swiper-pagination {
-      bottom: 10px;
-    }
-  }
-
-  .main-character {
-    margin-bottom: 20px;
-  }
-}
-
-figure {
-  margin: 0;
-  text-align: center; /* Centrer le contenu des figures */
 }

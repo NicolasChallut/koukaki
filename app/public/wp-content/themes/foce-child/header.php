@@ -42,5 +42,7 @@
                 <li><a href="#place">Lieu</a></li>
                 <li><a href="#studio">Studio Koukaki</a></li>
             </ul>
+            
         </nav>
     </header><!-- #masthead -->
+    

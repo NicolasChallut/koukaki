@@ -6,7 +6,7 @@ function theme_enqueue_assets() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 
     // Enqueue child theme styles and scripts
-    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
+    wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/sass/styles.css', array('parent-style'));
 
     // Enqueue Swiper CSS from CDN
     wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
@@ -31,5 +31,3 @@ if (get_stylesheet() !== get_template()) {
         return get_option('theme_mods_' . get_template(), $default);
     });
 }
-
-

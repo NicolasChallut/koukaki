@@ -78,7 +78,7 @@ figure {
 
 /* Gestion video background*/ 
 #background-video {
-    min-height: 806px;
+    min-height: 1024px;
     width: auto;
     object-fit: cover;
     position: fixed;

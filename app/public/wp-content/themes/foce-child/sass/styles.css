@@ -1,16 +1,3 @@
-@charset "UTF-8";
-/*
- Theme Name:  Fleurs d'orangers et chats errants - Oscars Short
- Theme URI: https://www.koukaki.local
- Author: Studio Koukaki
- Author URI: https://www.koukaki.local
- Template: foce
- Description: Thème enfant à l'occasion de la nomination aux Oscars Shorts
- Version: 0.1
-*/
-/* Variables pour les transformations */
-/* Mixins pour les animations */
-/* Inclure les animations */
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -22,34 +9,218 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Partir de 20px en dessous */
+    transform: translateY(200px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Arriver à sa position initiale */
+    transform: translateY(0);
   }
 }
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-20px); /* Partir de 20px au-dessus */
+    transform: translateY(-200px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Arriver à sa position initiale */
-  }
-}
-@keyframes apparition {
-  from {
-    transform: translateY(50px);
-  }
-  to {
     transform: translateY(0);
   }
 }
-/* Gestion video background */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.header {
+  position: fixed;
+  z-index: 3;
+  width: 1440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFD5A2;
+  padding: 10px 20px;
+  height: 60px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.header__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.header__content .header__title {
+  position: relative;
+  flex-grow: 1;
+  text-align: center;
+  color: #000;
+  font-size: 24px;
+}
+.header__content .header__title::before, .header__content .header__title::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.header__burger {
+  cursor: pointer;
+  z-index: 4;
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header__burger .burger__line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  transition: all 0.3s ease;
+}
+.header__burger.active .burger__line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.header__burger.active .burger__line:nth-child(2) {
+  opacity: 0;
+}
+.header__burger.active .burger__line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+.header__nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background: #FFF5E9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+.header__nav.active {
+  transform: translateX(0);
+}
+.header__nav .nav__logo {
+  margin-bottom: 20px;
+  max-width: 150px;
+  position: relative;
+}
+.header__nav .nav__logo::before, .header__nav .nav__logo::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.header__nav .nav__logo::before {
+  left: -30px;
+  background-image: url("./assets/images/orchid.png");
+  animation: rotation 5s linear infinite;
+}
+.header__nav .nav__logo::after {
+  right: -30px;
+  background-image: url("./assets/images/orchid.png");
+  animation: rotation 5s linear infinite;
+}
+.header__nav .nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.header__nav .nav__list li {
+  margin: 15px 0;
+  position: relative;
+  font-size: 64px;
+}
+.header__nav .nav__list li::before, .header__nav .nav__list li::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header__nav .nav__list li:nth-child(1)::before {
+  left: -30px;
+  background-image: url("./assets/images/blue_cat.png");
+}
+.header__nav .nav__list li:nth-child(1)::after {
+  right: -30px;
+  background-image: url("./assets/images/Sunflower.png");
+  animation: rotation 5s linear infinite;
+}
+.header__nav .nav__list li:nth-child(2)::after {
+  right: -30px;
+  background-image: url("./assets/images/random_flower.png");
+  animation: rotation 5s linear infinite;
+}
+.header__nav .nav__list li:nth-child(3)::before {
+  left: -30px;
+  background-image: url("./assets/images/flower.png");
+  animation: rotation 5s linear infinite;
+}
+.header__nav .nav__list li:nth-child(3)::after {
+  right: -30px;
+  background-image: url("./assets/images/black_cat.png");
+}
+.header__nav .nav__list li:nth-child(4)::before {
+  left: -30px;
+  background-image: url("./assets/images/orange_cat.png");
+}
+.header__nav .nav__list li:nth-child(4)::after {
+  right: -30px;
+  background-image: url("./assets/images/Hibiscus.png");
+  animation: rotation 5s linear infinite;
+}
+.header__nav .nav__list li a {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  transition: text-shadow 0.3s ease;
+}
+.header__nav .nav__list li a:hover {
+  text-shadow: 0px 0px 14px #FF5C00;
+}
+
+.site-main {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.site-main section {
+  height: 1024px;
+}
+
+figure {
+  margin: 0;
+  text-align: center;
+}
+
+.characters-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 #background-video {
-  min-height: 806px;
+  min-height: 1024px;
   width: auto;
   -o-object-fit: cover;
      object-fit: cover;
@@ -61,20 +232,15 @@
   z-index: -1;
 }
 
-/* /Gestion video */
-p::after,
-h2::after,
-#studio h2::before,
-#colophon::before,
-#colophon::after,
-.story__article::after,
-ul::after {
+.hidden {
+  display: none;
+}
+
+p::after, h2::after, #studio h2::before, #colophon::before, #colophon::after, .story__article::after, ul::after {
   animation: fadeInUp 4s ease-out forwards, rotation 5s linear infinite;
 }
 
-.story__article::before,
-.banner img,
-#place {
+.story__article::before, .banner img, #place {
   animation: fadeInUp 4s ease-out forwards;
 }
 
@@ -82,42 +248,7 @@ ul::after {
   animation: fadeInDown 4s ease-out forwards;
 }
 
-/*
-h2 {
-  animation: apparition 4s ease-out forwards;
-}
-*/
-/* FIN CSS animation fleurs */
-/* Animation nuages */
 #place {
-  background-image: url(./images/big_cloud.png), url(./images/little_cloud.png);
+  background-image: url(./assets/images/big_cloud.png), url(./assets/images/little_cloud.png);
   background-repeat: no-repeat;
-}
-
-/* FIN CSS animation nuages */
-/* CSS Swipper */
-#story .characters-title {
-  margin-bottom: 20px;
-}
-#story .swiper-container {
-  width: 100%;
-  height: auto;
-  padding-bottom: 40px; /* Pour la pagination si besoin */
-}
-#story .swiper-container .swiper-wrapper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-}
-#story .swiper-container .swiper-pagination {
-  bottom: 10px;
-}
-#story .main-character {
-  margin-bottom: 20px;
-}
-
-figure {
-  margin: 0;
-  text-align: center; /* Centrer le contenu des figures */
 }
