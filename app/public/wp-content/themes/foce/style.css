@@ -566,19 +566,8 @@ table {
 	overflow: hidden;
 }
 
-.site-footer::before {
-	content: url("./assets/images/Sunflower.png");
-	position: absolute;
-	left: 4em;
-	top: 0em;
-}
 
-.site-footer::after {
-	content: url("./assets/images/orchid.png");
-	position: absolute;
-	right: -4em;
-	bottom: 7.8em;
-}
+
 
 .site-footer ul {
 	padding: 0;
@@ -627,9 +616,7 @@ a:visited {
 	color: #000;
 }
 
-a:hover, a:focus, a:active {
-	color: #191970;
-}
+
 
 a:focus {
 	outline: thin dotted;

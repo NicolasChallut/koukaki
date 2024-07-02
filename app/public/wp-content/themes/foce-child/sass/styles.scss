@@ -7,6 +7,18 @@ $header-height: 60px;
 $menu-item-font-size: 64px; // Font size for menu items
 
 // Keyframes
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -38,6 +50,15 @@ $menu-item-font-size: 64px; // Font size for menu items
   }
 }
 
+@keyframes slideIn {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
 // Mixins
 @mixin flexCenter {
   display: flex;
@@ -54,25 +75,40 @@ $menu-item-font-size: 64px; // Font size for menu items
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 body, html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+// Apply rotation animation to all ::after elements
+*::after {
+  animation: rotation 5s linear infinite;
 }
 
 // Header
 .header {
   position: fixed;
-  z-index: 3;
-  width:  1440px;;
-  @include flexCenter;
-  justify-content: space-between;
+  width:100% ;
+  max-width: 1440px;
   background-color: $primary-bg-color;
-  padding: 10px 20px;
-  height: $header-height;
+  z-index: 3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  .header__inner {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: $header-height;
+    @include flexCenter;
+  }
 
   &__content {
     display: flex;
@@ -96,16 +132,18 @@ body, html {
         background-size: contain;
         background-repeat: no-repeat;
       }
-
-      
     }
   }
 
   &__burger {
     cursor: pointer;
+    background-color: transparent !important;
+    padding:0 !important;
+    border: transparent;
+    margin-right:132px;
     z-index: 4;
-    width: 30px;
-    height: 24px;
+    width: 40px;
+    height: 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -113,14 +151,14 @@ body, html {
     .burger__line {
       display: block;
       width: 100%;
-      height: 3px;
+      height: 1px;
       background: $text-color;
       @include transition(all, 0.3s, ease);
     }
 
     &.active {
       .burger__line:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(45deg) translate(7px, 5px);
       }
 
       .burger__line:nth-child(2) {
@@ -128,7 +166,7 @@ body, html {
       }
 
       .burger__line:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: rotate(-45deg) translate(7px, -5px);
       }
     }
   }
@@ -146,6 +184,7 @@ body, html {
     align-items: center;
     transform: translateX(-100%);
     @include transition(transform, 0.3s, ease);
+    overflow: hidden;
 
     &.active {
       transform: translateX(0);
@@ -164,18 +203,17 @@ body, html {
         height: 20px;
         background-size: contain;
         background-repeat: no-repeat;
+        animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
       }
 
       &::before {
         left: -30px;
         background-image: url('./assets/images/orchid.png');
-        animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
       }
 
       &::after {
         right: -30px;
         background-image: url('./assets/images/orchid.png');
-        animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
       }
     }
 
@@ -194,65 +232,77 @@ body, html {
         &::after {
           content: '';
           position: absolute;
-          width: 20px;
-          height: 20px;
           background-size: contain;
           background-repeat: no-repeat;
-          top: 50%;
           transform: translateY(-50%);
         }
 
         // Images for each menu item
         &:nth-child(1) {
           &::before {
-            left: -30px;
+            left: -80px;
+            width: 109.222px;
+            height: 98.633px;
             background-image: url('./assets/images/blue_cat.png');
-          
+            animation: float 3s ease-in-out infinite;
           }
           &::after {
-            right: -30px;
+            right: -200px;
+            top: -100px;
+            width: 216px;
+            height: 215.999px;
             background-image: url('./assets/images/Sunflower.png');
-            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
           }
         }
 
         &:nth-child(2) {
-          
           &::after {
-            right: -30px;
+            right: -278px;
+            width: 75.754px;
+            height: 74.534px;
             background-image: url('./assets/images/random_flower.png');
-            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
           }
         }
 
         &:nth-child(3) {
           &::before {
-            left: -30px;
+            left: -130px;
+            width: 70.762px;
+            height: 70.76px;
             background-image: url('./assets/images/flower.png');
-            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+            animation: rotation 5s linear infinite;
           }
           &::after {
-            right: -30px;
+            right: -200px;
+            width: 154.743px;
+            height: 147.567px;
             background-image: url('./assets/images/black_cat.png');
+            animation: float 3s ease-in-out infinite;
           }
         }
 
         &:nth-child(4) {
           &::before {
-            left: -30px;
+            left: -200px;
+            width: 105.914px;
+            height: 95.646px;
             background-image: url('./assets/images/orange_cat.png');
-            
+            animation: float 3s ease-in-out infinite;
           }
+          
+        }
+        &:nth-child(5) {
+          
           &::after {
-            right: -30px;
+            right: -8em;
+            bottom: -8em;
             background-image: url('./assets/images/Hibiscus.png');
-            animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+            width: 626.005px;
+            height: 626px;
           }
         }
-
         a {
           color: #000; // Change link color to match new background
-          text-decoration: none;
           position: relative;
           transition: text-shadow 0.3s ease;
 
@@ -265,31 +315,51 @@ body, html {
   }
 }
 
-// Main content
-.site-main {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
+#oscar{
+  display: flex;
 
-  section {
-    height: 1024px;
+    &::before{
+      content: url('./assets/images/Sunflower.png');
+      left: 4em;
+      top: -1em;
+      animation: rotation  5s linear infinite;
+    }
+    &::after{
+      content: url('./assets/images/orchid.png');
+      right: -4em;
+      bottom: 7.8em;
+    }
+
+  .oscar__title{
+    width: 643px;
+    height: 187px;
+    padding: 0;
+    margin-right: 10px;
   }
+
+  .oscar__logo{
+  width: 278px;
+  height: 129px;
+}
 }
 
-figure {
-  margin: 0;
-  text-align: center;
+// Main content
+h2{
+  animation: slideIn 0.8s forwards;   
+}
+h3{
+  background-image: url('./assets/images/orange_place_bg.png');
+  background-position: center;
+  background-size: 100%;
+
 }
 
-.characters-title {
-  margin-bottom: 20px;
-  text-align: center;
-}
 
 // Video background
 #background-video {
-  min-height: 1024px;
-  width: auto;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   object-fit: cover;
   position: fixed;
   left: 0;
@@ -299,17 +369,16 @@ figure {
   z-index: -1;
 }
 
-.hidden {
-  display: none;
-}
 
 // Element animations
-p::after, h2::after, #studio h2::before, #colophon::before, #colophon::after, .story__article::after, ul::after {
-  animation: fadeInUp 4s ease-out forwards,
-             rotation 5s linear infinite; // Ajouter l'animation de rotation;
+
+p::after, h2::after, #studio h2::before,#studio h2::after, #colophon::before, #colophon::after, .story__article::after, ul::after {
+  animation: fadeInUp 4s ease-out forwards;
+  animation: rotation 5s linear infinite;
 }
 
-.story__article::before, .banner img, #place {
+
+.story__article::before,.story__title::before, img.logo,.story #place,#studio > div::before {
   animation: fadeInUp 4s ease-out forwards;
 }
 
@@ -319,5 +388,5 @@ p::after, h2::after, #studio h2::before, #colophon::before, #colophon::after, .s
 
 #place {
   background-image: url(./assets/images/big_cloud.png), url(./assets/images/little_cloud.png);
-  background-repeat: no-repeat;
+
 }
