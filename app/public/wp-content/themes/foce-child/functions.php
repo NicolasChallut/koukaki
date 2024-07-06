@@ -23,7 +23,7 @@ function theme_enqueue_assets() {
             'swiper-js', 
             'https://unpkg.com/swiper/swiper-bundle.min.js', 
             array(), 
-            '7.0.0', 
+            '11.0.0', 
             true
         );
     }

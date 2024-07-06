@@ -317,6 +317,10 @@ body, html {
 
 #oscar{
   display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 563px;
 
     &::before{
       content: url('./assets/images/Sunflower.png');
@@ -333,8 +337,10 @@ body, html {
   .oscar__title{
     width: 643px;
     height: 187px;
+    padding:250px 10px 250px 0;
+    font-size: 42px;
+    font-weight: 700;
     padding: 0;
-    margin-right: 10px;
   }
 
   .oscar__logo{
@@ -345,7 +351,7 @@ body, html {
 
 // Main content
 h2{
-  animation: slideIn 0.8s forwards;   
+   
 }
 h3{
   background-image: url('./assets/images/orange_place_bg.png');
@@ -389,4 +395,58 @@ p::after, h2::after, #studio h2::before,#studio h2::after, #colophon::before, #c
 #place {
   background-image: url(./assets/images/big_cloud.png), url(./assets/images/little_cloud.png);
 
+}
+
+/* Swiper container styles */
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Swiper slide styles */
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px; /* Adjust width as needed */
+  height: 300px; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide figure {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  z-index: 10;
+}
+
+.main-character {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
 }

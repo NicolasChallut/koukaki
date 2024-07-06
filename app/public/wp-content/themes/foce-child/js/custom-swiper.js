@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const swiper = new Swiper('.swiper-container', {
+document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.swiper-container', {
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 3, // Display 3 slides at a time
+        slidesPerView: 'auto',
         coverflowEffect: {
             rotate: 50,
             stretch: 0,
@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         pagination: {
             el: '.swiper-pagination',
+            clickable: true,
         },
-        loop: true, // Enable looping
-        spaceBetween: 30, // Space between slides
     });
 });
