@@ -6,14 +6,18 @@ get_header();
 
 <section class="banner scroll">
     <img class="image logo" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
-    <video id="background-video" class="banner hidden" autoplay loop muted  alt="vidéo d'animation démonstrative">
-        <source type="video/mp4" src="<?php echo get_template_directory_uri() . '/assets/images/video.mp4'; ?>">
-    </video>
+    <video 
+    id="background-video"
+    class="hidden" 
+    autoplay loop muted  
+    alt="vidéo d'animation démonstrative"
+    src="<?php echo get_template_directory_uri() . '/assets/images/video.mp4'; ?>"
+    >
 </section>
 
-<section id="story" class="story">
+<section id="story" class="story ">
     <h2 class="animated-title story__title scroll">L'histoire</h2>
-    <article class="story__article scroll">
+    <article class="story__article ">
         <p><?php echo get_theme_mod('story'); ?></p>
     </article>
     <?php
@@ -25,37 +29,42 @@ get_header();
     );
     $characters_query = new WP_Query($args);
     ?>
-    <h3 class="characters-title scroll">Les personnages</h3>
-    <article id="characters" class="characters-container scroll">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide main-character">
-                    <?php
-                    $main_character = $characters_query->posts[0];
-                    echo '<figure>';
-                    echo get_the_post_thumbnail($main_character->ID, 'full');
-                    echo '<figcaption>' . $main_character->post_title . '</figcaption>';
-                    echo '</figure>';
-                    $characters_query->next_post();
-                    ?>
-                </div>
-                <?php
-                while ($characters_query->have_posts()) {
-                    $characters_query->the_post();
-                    echo '<div class="swiper-slide">';
-                    echo '<figure>';
-                    echo get_the_post_thumbnail(get_the_ID(), 'full');
-                    echo '<figcaption>';
-                    the_title();
-                    echo '</figcaption>';
-                    echo '</figure>';
-                    echo '</div>'; // End swiper-slide
-                }
-                ?>
-            </div>
-            <!-- Pagination (if needed) -->
-            <div class="swiper-pagination"></div>
+    
+<article id="characters" class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide main-character">
+        <h3 class="characters-title scroll">Les personnages</h3>
+            <?php
+            $main_character = $characters_query->posts[0];
+            echo '<figure>';
+            echo get_the_post_thumbnail($main_character->ID, 'full');
+            echo '<figcaption>' . $main_character->post_title . '</figcaption>';
+            echo '</figure>';
+            $characters_query->next_post();
+            ?>
         </div>
+        <?php
+        while ($characters_query->have_posts()) {
+            $characters_query->the_post();
+            echo '<div class="swiper-slide">';
+            echo '<figure>';
+            echo get_the_post_thumbnail(get_the_ID(), 'full');
+            echo '<figcaption>';
+            the_title();
+            echo '</figcaption>';
+            echo '</figure>';
+            echo '</div>'; // End swiper-slide
+        }
+        ?>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+   
+</article>
+
+            
+            
+        
     </article>
     <article id="place" class="scroll">
         <div>

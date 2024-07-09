@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.swiper-container', {
+    const swiper = new Swiper('.swiper-container', {
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,

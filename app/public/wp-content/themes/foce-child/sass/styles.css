@@ -20,7 +20,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(200px);
+    transform: translateY(400px);
   }
   to {
     opacity: 1;
@@ -45,25 +45,6 @@
     width: 0;
   }
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
-body, html {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-*::after {
-  animation: rotation 5s linear infinite;
-}
-
 .header {
   position: fixed;
   width: 100%;
@@ -288,6 +269,7 @@ h3 {
 #background-video {
   width: 100%;
   max-width: 1440px;
+  height: 806px;
   margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
@@ -299,12 +281,24 @@ h3 {
   z-index: -1;
 }
 
-p::after, h2::after, #studio h2::before, #studio h2::after, #colophon::before, #colophon::after, .story__article::after, ul::after {
-  animation: fadeInUp 4s ease-out forwards;
-  animation: rotation 5s linear infinite;
+p::after,
+h2::after,
+#studio h2::before,
+#studio h2::after,
+#colophon::before,
+#colophon::after,
+.story__article::after,
+ul::after {
+  animation: fadeInUp 4s ease-out forwards, rotation 5s linear infinite;
 }
 
-.story__article::before, .story__title::before, img.logo, .story #place, #studio > div::before {
+.story h2::after,
+.story__article::before,
+.story__article::after,
+.story__title::before,
+img.logo,
+#place,
+#studio > div::before {
   animation: fadeInUp 4s ease-out forwards;
 }
 
@@ -312,60 +306,21 @@ p::after, h2::after, #studio h2::before, #studio h2::after, #colophon::before, #
   animation: fadeInDown 4s ease-out forwards;
 }
 
-#place {
-  background-image: url(./assets/images/big_cloud.png), url(./assets/images/little_cloud.png);
-}
-
-/* Swiper container styles */
-.swiper-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Swiper slide styles */
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px; /* Adjust width as needed */
-  height: 300px; /* Adjust height as needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide figure {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.swiper-pagination {
+#place ::before {
+  content: url(./assests/images/big_cloud.png);
   position: absolute;
-  bottom: 10px;
+  width: 266px;
+  height: 91px;
   left: 0;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  z-index: 10;
+  top: 1.8em;
+}
+#place h3::after {
+  content: url(./assests/images/little_cloud.png);
+  position: absolute;
+  width: 183px;
+  height: 63px;
 }
 
-.main-character {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 300px;
-}
+.swiper-container {
+  display: flex !important;
+}/*# sourceMappingURL=styles.css.map */

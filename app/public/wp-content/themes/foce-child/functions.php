@@ -29,7 +29,7 @@ function theme_enqueue_assets() {
     }
 
     // Enqueue the custom Swiper initialization script
-    wp_enqueue_script(
+   wp_enqueue_script(
         'custom-swiper-js', 
         get_stylesheet_directory_uri() . '/js/custom-swiper.js', 
         array('swiper-js'), 
@@ -46,14 +46,7 @@ function theme_enqueue_assets() {
         true
     );
 
-    // Enqueue the animated title script
-    wp_enqueue_script(
-        'animated-title-script', 
-        get_stylesheet_directory_uri() . '/js/animated-title.js', 
-        array(), 
-        null, 
-        true
-    );
+    
 }
 
 // Get customizer options from parent theme

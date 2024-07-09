@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      threshold: 0.1 // Déclenchement lorsque 50% de l'élément est visible
+      threshold: 0.5 // Déclenchement lorsque 50% de l'élément est visible
     });
   
     const elements = document.querySelectorAll('.scroll');
