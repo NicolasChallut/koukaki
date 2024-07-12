@@ -321,24 +321,12 @@ img.logo,
   z-index: -1;
 }
 
-#place {
-  animation: fadeInUp 4s ease-out forwards;
-}
-
-h3::before {
+#place h3::before {
   content: url("./assets/images/big_cloud.png");
 }
-h3::after {
-  content: url("./assets/images/little_cloud.png");
+#place h3::after {
+  content: url("./assests/images/little_cloud");
   position: absolute;
   width: 183px;
   height: 63px;
-}
-
-p {
-  animation: none;
-}
-
-#place > *:not(p) {
-  animation: none;
 }/*# sourceMappingURL=styles.css.map */

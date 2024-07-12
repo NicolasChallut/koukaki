@@ -406,28 +406,22 @@ ul::after
 
 
 #place {
-  animation: fadeInUp 4s ease-out forwards;
+    
+    
+
+  h3{
+   &::before{
+    content: url('./assets/images/big_cloud.png');
+    
+  }
+
+  &::after{
+    content: url('./assests/images/little_cloud');
+    position: absolute;
+    width: 183px;
+    height: 63px;
+  }
 }
-  h3 {
-    &::before {
-      content: url('./assets/images/big_cloud.png');
-    }
-
-    &::after {
-      content: url('./assets/images/little_cloud.png');
-      position: absolute;
-      width: 183px;
-      height: 63px;
-    }
-  }
-
-  // Exclude <p> elements from the animation
-  p {
-    animation: none;
-  }
 
 
-// Apply animation to all direct children of #place except <p>
-#place > *:not(p) {
-  animation:none;
 }
