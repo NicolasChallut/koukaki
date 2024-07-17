@@ -1,21 +1,45 @@
 // Variables
 $primary-bg-color: #FFD5A2;
 $text-color: #000;
-$menu-bg-color: #FFF5E9; 
+$menu-bg-color: #FFF5E9;
 $hover-shadow-color: #FF5C00;
 $header-height: 60px;
-$menu-item-font-size: 64px; 
+$menu-item-font-size: 64px;
+$cloud-animation: travel 8s ease-in-out forwards;
+$cloud-animation-delay: 3s;
+$cloud-blur: blur(10px);
+$cloud-size-big: 316px 122px;
+$cloud-size-little: 142px 55px;
 
 // Keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes travel {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-400px);
+  }
+}
+
 @keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+
+  0%,
   100% {
     transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
   }
 }
 
@@ -23,6 +47,7 @@ $menu-item-font-size: 64px;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -31,19 +56,32 @@ $menu-item-font-size: 64px;
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(400px);
+    transform: translateY(300px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+@keyframes fadeUpRotation {
+  from {
+    transform: rotate(0deg) translateY(300px);
+  }
+
+  to {
+    transform: rotate(360deg) translateY(0);
+  }
+}
+
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-200px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -54,13 +92,25 @@ $menu-item-font-size: 64px;
   from {
     width: 100%;
   }
+
   to {
     width: 0;
   }
 }
 
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 // Mixins
-@mixin flexCenter {
+@mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,43 +120,66 @@ $menu-item-font-size: 64px;
   transition: $property $duration $ease;
 }
 
-//animations
+@mixin cloud($url, $top, $left, $size) {
+  content: url($url);
+  position: absolute;
+  top: $top;
+  left: $left;
+  width: nth($size, 1);
+  height: nth($size, 2);
+  filter: $cloud-blur;
+  animation: $cloud-animation;
+}
+
+// General animations
 p::after,
-h2::after, 
+h2::after,
 #studio h2::before,
 #studio h2::after,
 #colophon::before,
 #colophon::after,
 .story__article::after,
-ul::after
- {
-  animation:fadeInUp 4s ease-out forwards,
-  rotation 5s linear infinite;
+ul::after {
+  animation: fadeInUp 4s ease-out forwards,
+    rotation 5s linear infinite;
+  animation-delay: 0s,4s;
 }
 
 
-
-.story h2::after,
 .story__article::before,
-.story__article::after,
 .story__title::before,
- img.logo,
- #studio > div::before
- {
-  animation:fadeInUp 4s ease-out forwards;
+img.logo,
+#studio>div::before {
+  animation: fadeInUp 4s ease-out forwards;
 }
 
 .banner {
   animation: fadeInDown 4s ease-out forwards;
+
+  #background-video {
+    width: 100%;
+    max-width: 1440px;
+    height: 806px;
+    margin: 0 auto;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    
+  }
 }
 
-
-
+.animated-title {
+  animation: slideUp 4s ease-out forwards;
+}
 
 // Header
 .header {
   position: fixed;
-  width:100% ;
+  width: 100%;
   max-width: 1440px;
   background-color: $primary-bg-color;
   z-index: 3;
@@ -119,7 +192,7 @@ ul::after
     justify-content: space-between;
     padding: 10px 20px;
     height: $header-height;
-    @include flexCenter;
+    @include flex-center;
   }
 
   &__content {
@@ -150,9 +223,9 @@ ul::after
   &__burger {
     cursor: pointer;
     background-color: transparent !important;
-    padding:0 !important;
+    padding: 0 !important;
     border: transparent;
-    margin-right:132px;
+    margin-right: 132px;
     z-index: 4;
     width: 40px;
     height: 18px;
@@ -189,7 +262,7 @@ ul::after
     left: 0;
     width: 100%;
     height: calc(100% - #{$header-height});
-    background: $menu-bg-color; // Updated menu background color
+    background: $menu-bg-color;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -215,7 +288,7 @@ ul::after
         height: 20px;
         background-size: contain;
         background-repeat: no-repeat;
-        animation: rotation 5s linear infinite; // Ajouter l'animation de rotation
+        animation: rotation 5s linear infinite;
       }
 
       &::before {
@@ -238,7 +311,8 @@ ul::after
       li {
         margin: 15px 0;
         position: relative;
-        font-size: $menu-item-font-size; // Apply font size to menu items
+        font-size: $menu-item-font-size;
+
 
         &::before,
         &::after {
@@ -258,13 +332,14 @@ ul::after
             background-image: url('./assets/images/blue_cat.png');
             animation: float 3s ease-in-out infinite;
           }
+
           &::after {
             right: -200px;
             top: -100px;
             width: 216px;
             height: 215.999px;
             background-image: url('./assets/images/Sunflower.png');
-            animation:rotation 5s linear infinite;
+            animation: rotation 5s linear infinite;
           }
         }
 
@@ -274,7 +349,7 @@ ul::after
             width: 75.754px;
             height: 74.534px;
             background-image: url('./assets/images/random_flower.png');
-            animation:rotation 5s linear infinite;
+            animation: rotation 5s linear infinite;
           }
         }
 
@@ -286,6 +361,7 @@ ul::after
             background-image: url('./assets/images/flower.png');
             animation: rotation 5s linear infinite;
           }
+
           &::after {
             right: -200px;
             width: 154.743px;
@@ -303,22 +379,23 @@ ul::after
             background-image: url('./assets/images/orange_cat.png');
             animation: float 3s ease-in-out infinite;
           }
-          
         }
+
         &:nth-child(5) {
-          
           &::after {
             right: -8em;
             bottom: -8em;
             background-image: url('./assets/images/Hibiscus.png');
-            animation:rotation 5s linear infinite;
+            animation: rotation 5s linear infinite;
             width: 626.005px;
             height: 626px;
           }
         }
+
         a {
-          color: #000; // Change link color to match new background
+          color: $text-color;
           position: relative;
+          text-decoration: none;
           transition: text-shadow 0.3s ease;
 
           &:hover {
@@ -330,104 +407,107 @@ ul::after
   }
 }
 
-//swiper
-.main-characters{
+// Swiper
+.main-characters {
   background-image: url('./assets/images/orange_place_bg.png');
+
 }
+
 .story #characters {
-  div{
+  font-size: 20px;
+
+  .swiper-container{
+    overflow: hidden ;
+  }
+
+  div {
     width: 1440px;
   }
-  h3{
+
+  h3 {
     text-align: left;
+    background-position: 30px;
   }
- .swiper-wrapper{
-  display: flex;
+
+  .swiper-wrapper {
+    display: flex;
     flex: 1;
     flex-direction: row;
     flex-wrap: nowrap;
+    
+  }
 }
-}
 
-
-
-#oscar{
+#oscar {
   display: flex;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
   height: 563px;
 
-    &::before{
-      content: url('./assets/images/Sunflower.png');
-      left: 4em;
-      top: -1em;
-      animation: rotation  5s linear infinite;
-    }
-    &::after{
-      content: url('./assets/images/orchid.png');
-      right: -4em;
-      bottom: 7.8em;
-      animation: rotation  5s linear infinite;
-    }
+  &::before {
+    content: url('./assets/images/Sunflower.png');
+    left: 4em;
+    top: -1em;
+    animation: rotation 5s linear infinite;
+  }
 
-  .oscar__title{
+  &::after {
+    content: url('./assets/images/orchid.png');
+    right: -4em;
+    bottom: 7.8em;
+    animation: rotation 5s linear infinite;
+  }
+
+  .oscar__title {
     background-image: url('./assets/images/orange_place_bg.png');
     width: 643px;
     height: 187px;
-    padding:250px 10px 250px 0 !important;
     font-size: 42px;
     font-weight: 700;
     padding: 0;
   }
 
-  .oscar__logo{
-  width: 278px;
-  height: 129px;
-}
-}
-
-// Video background
-#background-video {
-  width: 100%;
-  max-width: 1440px;
-  height: 806px;
-  margin: 0 auto;
-  object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
+  .oscar__logo {
+    width: 278px;
+    height: 129px;
+  }
 }
 
 
 
 
+.story {
+  #place div>*:not(p.place_section) {
+    animation: fadeInUp 4s ease-out forwards;
+  }
 #place {
-  animation: fadeInUp 4s ease-out forwards;
-}
+  
+
   h3 {
+
+    &::before,
+    &::after {
+      position: absolute;
+      filter: blur(10px);
+      animation: $cloud-animation;
+      animation-delay: $cloud-animation-delay;
+    }
+
     &::before {
       content: url('./assets/images/big_cloud.png');
+      top: 1.5em;
+      left: 22.5em;
+      width: 316px;
+      height: 122px;
     }
 
     &::after {
       content: url('./assets/images/little_cloud.png');
-      position: absolute;
-      width: 183px;
-      height: 63px;
+      left: 17em;
+      width: 142px;
+      height: 55px;
     }
   }
-
-  // Exclude <p> elements from the animation
-  p {
-    animation: none;
-  }
-
-
-// Apply animation to all direct children of #place except <p>
-#place > *:not(p) {
-  animation:none;
+}
 }

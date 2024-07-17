@@ -8,8 +8,9 @@ get_header();
     <img class="image logo" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
     <video 
     id="background-video"
-    class="hidden" 
-    autoplay loop muted  
+    class="hidden"  
+    loop 
+    muted  
     alt="vidéo d'animation démonstrative"
     src="<?php echo get_template_directory_uri() . '/assets/images/video.mp4'; ?>"
     >
@@ -61,11 +62,13 @@ get_header();
         
     </article>
     <article id="place" class="scroll">
-        <div>
-            <h3>Le Lieu</h3>
-            <p><?php echo get_theme_mod('place'); ?></p>
-        </div>
-    </article>
+    <div>
+        <h3>Le Lieu</h3>
+        
+        <p class="place_section"><?php echo get_theme_mod('place'); ?></p>
+        
+    </div>
+</article>
 </section>
 
 <section id="studio" class="scroll">
