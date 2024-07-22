@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var video = document.getElementById('background-video');
 
     // Delay in milliseconds (5000ms = 5 seconds)
-    var delay = 4000;
+    var delay = 2000;
 
     // Show video after the delay and start playing
     setTimeout(function() {

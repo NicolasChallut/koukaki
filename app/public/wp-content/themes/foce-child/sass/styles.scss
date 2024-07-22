@@ -56,7 +56,7 @@ $cloud-size-little: 142px 55px;
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(300px);
+    transform: translateY(50%);
   }
 
   to {
@@ -79,7 +79,7 @@ $cloud-size-little: 142px 55px;
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-50%);
   }
 
   to {
@@ -88,26 +88,29 @@ $cloud-size-little: 142px 55px;
   }
 }
 
-@keyframes slideIn {
-  from {
-    width: 100%;
-  }
-
-  to {
-    width: 0;
-  }
-}
 
 @keyframes slideUp {
   from {
     opacity: 1;
-    transform: translateY(100%);
+    transform: translateY(120px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+@keyframes slideDown {
+  from {
+    
+    transform: translateY(-100%);
+  }
+  to {
+    
+    transform: translateY(0);
+  }
+}
+
 
 // Mixins
 @mixin flex-center {
@@ -140,21 +143,29 @@ h2::after,
 #colophon::after,
 .story__article::after,
 ul::after {
-  animation: fadeInUp 4s ease-out forwards,
+  animation: fadeInUp 1s ease-out forwards,
     rotation 5s linear infinite;
-  animation-delay: 0s,4s;
+  animation-delay: 0s,1s;
 }
 
 
 .story__article::before,
 .story__title::before,
-img.logo,
 #studio>div::before {
-  animation: fadeInUp 4s ease-out forwards;
+  animation: fadeInUp 2s ease-out forwards;
+}
+
+.fadeInUp{
+  animation: fadeInUp 2s ease-out forwards;
+  animation-delay: 2s;
 }
 
 .banner {
-  animation: fadeInDown 4s ease-out forwards;
+  animation: fadeInDown 2s ease-out forwards;
+
+  .logo{
+    opacity: 0;
+  }
 
   #background-video {
     width: 100%;
@@ -172,9 +183,7 @@ img.logo,
   }
 }
 
-.animated-title {
-  animation: slideUp 4s ease-out forwards;
-}
+
 
 // Header
 .header {
@@ -413,7 +422,15 @@ img.logo,
 
 }
 
-.story #characters {
+#story {
+
+  span{
+    animation: slideUp 2s ease-out forwards;
+  }
+  
+}
+
+#characters {
   font-size: 20px;
 
   .swiper-container{
@@ -475,17 +492,22 @@ img.logo,
 }
 
 
-
-
-.story {
-  #place div>*:not(p.place_section) {
-    animation: fadeInUp 4s ease-out forwards;
-  }
 #place {
-  
-
+  background-image: none !important;
+  position: relative;
+  overflow: hidden;
+ &::before{
+  content: '';
+  position: absolute;
+    background-image: url('./assets/images/place_bg.png');
+    width: 100%;
+    min-height: 699px;
+    background-size: cover;
+    animation: fadeInUp 2s ease-out forwards;
+    overflow: hidden;
+    z-index: -100;} 
   h3 {
-
+    animation: fadeInUp 2s ease-out forwards;
     &::before,
     &::after {
       position: absolute;
@@ -509,5 +531,30 @@ img.logo,
       height: 55px;
     }
   }
+ 
 }
+
+#studio h2 {
+  span {
+    display: inline-block;
+    position: relative;
+    top: 120px;
+    transition: transform 2s ease-out, opacity 2s ease-out;
+  }
+
+  &:hover span {
+    animation: slideUp 2s ease-out forwards;
+  }
+
+  &:hover span:nth-child(2) {
+    animation-delay: 0.5s; /* Ajustez le délai selon vos besoins */
+  }
+}
+
+#studio div {
+  z-index: 100;
+  position: relative;
+  &::before {
+    top: 0;
+  }
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -33,7 +34,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(300px);
+    transform: translateY(50%);
   }
   to {
     opacity: 1;
@@ -51,28 +52,28 @@
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-200px);
+    transform: translateY(-50%);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-@keyframes slideIn {
-  from {
-    width: 100%;
-  }
-  to {
-    width: 0;
-  }
-}
 @keyframes slideUp {
   from {
     opacity: 1;
-    transform: translateY(100%);
+    transform: translateY(120px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
     transform: translateY(0);
   }
 }
@@ -84,19 +85,26 @@ h2::after,
 #colophon::after,
 .story__article::after,
 ul::after {
-  animation: fadeInUp 4s ease-out forwards, rotation 5s linear infinite;
-  animation-delay: 0s, 4s;
+  animation: fadeInUp 1s ease-out forwards, rotation 5s linear infinite;
+  animation-delay: 0s, 1s;
 }
 
 .story__article::before,
 .story__title::before,
-img.logo,
 #studio > div::before {
-  animation: fadeInUp 4s ease-out forwards;
+  animation: fadeInUp 2s ease-out forwards;
+}
+
+.fadeInUp {
+  animation: fadeInUp 2s ease-out forwards;
+  animation-delay: 2s;
 }
 
 .banner {
-  animation: fadeInDown 4s ease-out forwards;
+  animation: fadeInDown 2s ease-out forwards;
+}
+.banner .logo {
+  opacity: 0;
 }
 .banner #background-video {
   width: 100%;
@@ -111,10 +119,6 @@ img.logo,
   top: 0;
   bottom: 0;
   z-index: -1;
-}
-
-.animated-title {
-  animation: slideUp 4s ease-out forwards;
 }
 
 .header {
@@ -309,20 +313,24 @@ img.logo,
   background-image: url("./assets/images/orange_place_bg.png");
 }
 
-.story #characters {
+#story span {
+  animation: slideUp 2s ease-out forwards;
+}
+
+#characters {
   font-size: 20px;
 }
-.story #characters .swiper-container {
+#characters .swiper-container {
   overflow: hidden;
 }
-.story #characters div {
+#characters div {
   width: 1440px;
 }
-.story #characters h3 {
+#characters h3 {
   text-align: left;
   background-position: 30px;
 }
-.story #characters .swiper-wrapper {
+#characters .swiper-wrapper {
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -361,25 +369,62 @@ img.logo,
   height: 129px;
 }
 
-.story #place div > *:not(p.place_section) {
-  animation: fadeInUp 4s ease-out forwards;
+#place {
+  background-image: none !important;
+  position: relative;
+  overflow: hidden;
 }
-.story #place h3::before, .story #place h3::after {
+#place::before {
+  content: "";
+  position: absolute;
+  background-image: url("./assets/images/place_bg.png");
+  width: 100%;
+  min-height: 699px;
+  background-size: cover;
+  animation: fadeInUp 2s ease-out forwards;
+  overflow: hidden;
+  z-index: -100;
+}
+#place h3 {
+  animation: fadeInUp 2s ease-out forwards;
+}
+#place h3::before, #place h3::after {
   position: absolute;
   filter: blur(10px);
   animation: travel 8s ease-in-out forwards;
   animation-delay: 3s;
 }
-.story #place h3::before {
+#place h3::before {
   content: url("./assets/images/big_cloud.png");
   top: 1.5em;
   left: 22.5em;
   width: 316px;
   height: 122px;
 }
-.story #place h3::after {
+#place h3::after {
   content: url("./assets/images/little_cloud.png");
   left: 17em;
   width: 142px;
   height: 55px;
+}
+
+#studio h2 span {
+  display: inline-block;
+  position: relative;
+  top: 120px;
+  transition: transform 2s ease-out, opacity 2s ease-out;
+}
+#studio h2:hover span {
+  animation: slideUp 2s ease-out forwards;
+}
+#studio h2:hover span:nth-child(2) {
+  animation-delay: 0.5s; /* Ajustez le délai selon vos besoins */
+}
+
+#studio div {
+  z-index: 100;
+  position: relative;
+}
+#studio div::before {
+  top: 0;
 }/*# sourceMappingURL=styles.css.map */

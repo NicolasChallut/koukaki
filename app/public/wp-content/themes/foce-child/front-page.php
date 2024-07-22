@@ -5,7 +5,7 @@ get_header();
 <main id="primary" class="site-main">
 
 <section class="banner scroll">
-    <img class="image logo" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
+    <img class="image logo fadeInUp" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
     <video 
     id="background-video"
     class="hidden"  
@@ -16,11 +16,12 @@ get_header();
     >
 </section>
 
-<section id="story" class="story ">
-    <h2 class="story__title scroll">
-    <span class="animated-title">L'</span>
-    <span class="animated-title">Histoire</span></h2>
-    <article class="story__article ">
+<section id="story" class="story scroll">
+    <h2 class="story__title">
+    <span >L'</span>
+    <span >Histoire</span>
+    </h2>
+    <article class="story__article scroll">
         <p><?php echo get_theme_mod('story'); ?></p>
     </article>
     <?php
@@ -61,20 +62,20 @@ get_header();
             
         
     </article>
-    <article id="place" class="scroll">
+    <article id="place" class=" scroll">
     <div>
-        <h3>Le Lieu</h3>
+        <h3 class=" ">Le Lieu</h3>
         
-        <p class="place_section"><?php echo get_theme_mod('place'); ?></p>
+        <p><?php echo get_theme_mod('place'); ?></p>
         
     </div>
 </article>
 </section>
 
 <section id="studio" class="scroll">
-    <h2 class="animated-title scroll">
-        <span class="animated-title scroll">Studio</span> 
-        <span class="animated-title scroll">Koukaki</span>
+    <h2>
+        <span >Studio</span> 
+        <span >Koukaki</span>
     </h2>
     <div>
         <p>Acteur majeur de l’animation, Koukaki est un studio intégré fondé en 2012 qui créé, produit et distribue des programmes originaux dans plus de 190 pays pour les enfants et les adultes. Nous avons deux sections en activité : le long métrage et le court métrage. Nous développons des films fantastiques, principalement autour de la culture de notre pays natal, le Japon.</p>
