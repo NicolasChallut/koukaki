@@ -5,7 +5,7 @@ get_header();
 <main id="primary" class="site-main">
 
 <section class="banner scroll">
-    <img class="image logo fadeInUp" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
+    <img class="image  fadeInUp scroll" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
     <video 
     id="background-video"
     class="hidden"  
@@ -16,8 +16,8 @@ get_header();
     >
 </section>
 
-<section id="story" class="story scroll">
-    <h2 class="story__title">
+<section id="story" class="story">
+    <h2 class="story__title scroll">
     <span >L'</span>
     <span >Histoire</span>
     </h2>
@@ -35,7 +35,7 @@ get_header();
     ?>
     
     
-    <article id="characters">
+    <article id="characters" class=" scroll">
         
                 
                 <div class="swiper-container">
@@ -64,7 +64,7 @@ get_header();
     </article>
     <article id="place" class=" scroll">
     <div>
-        <h3 class=" ">Le Lieu</h3>
+        <h3 class="place scroll">Le Lieu</h3>
         
         <p><?php echo get_theme_mod('place'); ?></p>
         
@@ -72,8 +72,8 @@ get_header();
 </article>
 </section>
 
-<section id="studio" class="scroll">
-    <h2>
+<section id="studio">
+    <h2 class="scroll">
         <span >Studio</span> 
         <span >Koukaki</span>
     </h2>
@@ -84,7 +84,7 @@ get_header();
 </section>
 <section id="oscar" class="scroll">
     <h3 class="oscar__title">Fleurs d’oranger & chats errants<span> est nominé aux Oscars Short</span> Film Animated de 2022 !</h3>
-    <img class="oscar__logo" src="<?php echo get_template_directory_uri() . '/assets/images/Oscar.png';?>">
+    <img class="oscar__logo scroll" src="<?php echo get_template_directory_uri() . '/assets/images/Oscar.png';?>">
 </section>
 </main><!-- #main -->
 

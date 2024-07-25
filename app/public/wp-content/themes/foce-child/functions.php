@@ -17,6 +17,16 @@ function theme_enqueue_assets() {
         true
     );
 
+    // Enqueue scroll
+    wp_enqueue_script(
+        'scroll-script', 
+        get_stylesheet_directory_uri() . '/js/scroll.js', 
+        array(), 
+        null, 
+        true
+    );
+
+
     // Enqueue the Swiper JS library first if not already done
     if (!wp_script_is('swiper-js', 'enqueued')) {
         wp_enqueue_script(

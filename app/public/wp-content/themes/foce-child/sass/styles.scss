@@ -5,11 +5,15 @@ $menu-bg-color: #FFF5E9;
 $hover-shadow-color: #FF5C00;
 $header-height: 60px;
 $menu-item-font-size: 64px;
+
 $cloud-animation: travel 8s ease-in-out forwards;
-$cloud-animation-delay: 3s;
+$cloud-animation-delay: 2s;
 $cloud-blur: blur(10px);
 $cloud-size-big: 316px 122px;
 $cloud-size-little: 142px 55px;
+
+$FadeInUp:fadeInUp 1s ease-out forwards;
+
 
 // Keyframes
 @keyframes fadeIn {
@@ -135,39 +139,62 @@ $cloud-size-little: 142px 55px;
 }
 
 // General animations
-p::after,
-h2::after,
-#studio h2::before,
-#studio h2::after,
-#colophon::before,
-#colophon::after,
-.story__article::after,
-ul::after {
-  animation: fadeInUp 1s ease-out forwards,
-    rotation 5s linear infinite;
+.scroll.active::before,.scroll.active::after {
+  animation: $FadeInUp,rotation 5s linear infinite;
   animation-delay: 0s,1s;
 }
 
-
-.story__article::before,
-.story__title::before,
-#studio>div::before {
-  animation: fadeInUp 2s ease-out forwards;
+.scroll{
+  opacity: 0;
 }
 
-.fadeInUp{
-  animation: fadeInUp 2s ease-out forwards;
-  animation-delay: 2s;
+.scroll.active {
+  opacity: 1;
+  span {
+    opacity: 0;
+    display: inline-block;
+    position: relative;
+    transition: transform 2s ease-out, opacity 2s ease-out;
+  }
+
+  & span {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  & span:nth-child(2) {
+    animation-delay: 0.25s; /* Ajustez le délai selon vos besoins */
+  }
 }
 
-.banner {
-  animation: fadeInDown 2s ease-out forwards;
 
-  .logo{
+
+#place.scroll.active::before,
+#characters.scroll.active,
+.story__title.scroll.active::before,
+.story__article.scroll.active::before,
+.site-footer.scroll.active
+{
+  animation: $FadeInUp;
+}
+
+.place.scroll.active::before,.place.scroll.active::after{
+  animation: $cloud-animation;
+  animation-delay: $cloud-animation-delay;
+}
+
+.fadeInUp.scroll.active{
+  animation: $FadeInUp;
+  animation-delay: 1s;
+}
+
+.banner.scroll.active {
+  animation: fadeInDown 1s ease-out forwards;
+
+.image{
     opacity: 0;
   }
 
-  #background-video {
+#background-video {
     width: 100%;
     max-width: 1440px;
     height: 806px;
@@ -183,15 +210,13 @@ ul::after {
   }
 }
 
-
-
 // Header
 .header {
   position: fixed;
   width: 100%;
   max-width: 1440px;
   background-color: $primary-bg-color;
-  z-index: 3;
+  z-index: 30;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   .header__inner {
@@ -422,14 +447,6 @@ ul::after {
 
 }
 
-#story {
-
-  span{
-    animation: slideUp 2s ease-out forwards;
-  }
-  
-}
-
 #characters {
   font-size: 20px;
 
@@ -466,14 +483,12 @@ ul::after {
     content: url('./assets/images/Sunflower.png');
     left: 4em;
     top: -1em;
-    animation: rotation 5s linear infinite;
   }
 
   &::after {
     content: url('./assets/images/orchid.png');
     right: -4em;
     bottom: 7.8em;
-    animation: rotation 5s linear infinite;
   }
 
   .oscar__title {
@@ -497,23 +512,21 @@ ul::after {
   position: relative;
   overflow: hidden;
  &::before{
-  content: '';
-  position: absolute;
+    content: '';
+    position: absolute;
     background-image: url('./assets/images/place_bg.png');
+    opacity: 0;
     width: 100%;
     min-height: 699px;
     background-size: cover;
-    animation: fadeInUp 2s ease-out forwards;
     overflow: hidden;
     z-index: -100;} 
   h3 {
-    animation: fadeInUp 2s ease-out forwards;
     &::before,
     &::after {
       position: absolute;
       filter: blur(10px);
-      animation: $cloud-animation;
-      animation-delay: $cloud-animation-delay;
+      
     }
 
     &::before {
@@ -534,27 +547,10 @@ ul::after {
  
 }
 
-#studio h2 {
-  span {
-    display: inline-block;
-    position: relative;
-    top: 120px;
-    transition: transform 2s ease-out, opacity 2s ease-out;
-  }
-
-  &:hover span {
-    animation: slideUp 2s ease-out forwards;
-  }
-
-  &:hover span:nth-child(2) {
-    animation-delay: 0.5s; /* Ajustez le délai selon vos besoins */
-  }
-}
-
 #studio div {
-  z-index: 100;
-  position: relative;
-  &::before {
-    top: 0;
+    z-index: 10;
+    position: relative;
+    &::before {
+      top: 0;
+    }
   }
-}

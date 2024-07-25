@@ -77,36 +77,56 @@
     transform: translateY(0);
   }
 }
-p::after,
-h2::after,
-#studio h2::before,
-#studio h2::after,
-#colophon::before,
-#colophon::after,
-.story__article::after,
-ul::after {
+.scroll.active::before, .scroll.active::after {
   animation: fadeInUp 1s ease-out forwards, rotation 5s linear infinite;
   animation-delay: 0s, 1s;
 }
 
-.story__article::before,
-.story__title::before,
-#studio > div::before {
-  animation: fadeInUp 2s ease-out forwards;
+.scroll {
+  opacity: 0;
 }
 
-.fadeInUp {
-  animation: fadeInUp 2s ease-out forwards;
+.scroll.active {
+  opacity: 1;
+}
+.scroll.active span {
+  opacity: 0;
+  display: inline-block;
+  position: relative;
+  transition: transform 2s ease-out, opacity 2s ease-out;
+}
+.scroll.active span {
+  animation: slideUp 0.5s ease-out forwards;
+}
+.scroll.active span:nth-child(2) {
+  animation-delay: 0.25s; /* Ajustez le délai selon vos besoins */
+}
+
+#place.scroll.active::before,
+#characters.scroll.active,
+.story__title.scroll.active::before,
+.story__article.scroll.active::before,
+.site-footer.scroll.active {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.place.scroll.active::before, .place.scroll.active::after {
+  animation: travel 8s ease-in-out forwards;
   animation-delay: 2s;
 }
 
-.banner {
-  animation: fadeInDown 2s ease-out forwards;
+.fadeInUp.scroll.active {
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 1s;
 }
-.banner .logo {
+
+.banner.scroll.active {
+  animation: fadeInDown 1s ease-out forwards;
+}
+.banner.scroll.active .image {
   opacity: 0;
 }
-.banner #background-video {
+.banner.scroll.active #background-video {
   width: 100%;
   max-width: 1440px;
   height: 806px;
@@ -126,7 +146,7 @@ ul::after {
   width: 100%;
   max-width: 1440px;
   background-color: #FFD5A2;
-  z-index: 3;
+  z-index: 30;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .header .header__inner {
@@ -313,10 +333,6 @@ ul::after {
   background-image: url("./assets/images/orange_place_bg.png");
 }
 
-#story span {
-  animation: slideUp 2s ease-out forwards;
-}
-
 #characters {
   font-size: 20px;
 }
@@ -348,13 +364,11 @@ ul::after {
   content: url("./assets/images/Sunflower.png");
   left: 4em;
   top: -1em;
-  animation: rotation 5s linear infinite;
 }
 #oscar::after {
   content: url("./assets/images/orchid.png");
   right: -4em;
   bottom: 7.8em;
-  animation: rotation 5s linear infinite;
 }
 #oscar .oscar__title {
   background-image: url("./assets/images/orange_place_bg.png");
@@ -378,21 +392,16 @@ ul::after {
   content: "";
   position: absolute;
   background-image: url("./assets/images/place_bg.png");
+  opacity: 0;
   width: 100%;
   min-height: 699px;
   background-size: cover;
-  animation: fadeInUp 2s ease-out forwards;
   overflow: hidden;
   z-index: -100;
-}
-#place h3 {
-  animation: fadeInUp 2s ease-out forwards;
 }
 #place h3::before, #place h3::after {
   position: absolute;
   filter: blur(10px);
-  animation: travel 8s ease-in-out forwards;
-  animation-delay: 3s;
 }
 #place h3::before {
   content: url("./assets/images/big_cloud.png");
@@ -408,21 +417,8 @@ ul::after {
   height: 55px;
 }
 
-#studio h2 span {
-  display: inline-block;
-  position: relative;
-  top: 120px;
-  transition: transform 2s ease-out, opacity 2s ease-out;
-}
-#studio h2:hover span {
-  animation: slideUp 2s ease-out forwards;
-}
-#studio h2:hover span:nth-child(2) {
-  animation-delay: 0.5s; /* Ajustez le délai selon vos besoins */
-}
-
 #studio div {
-  z-index: 100;
+  z-index: 10;
   position: relative;
 }
 #studio div::before {
