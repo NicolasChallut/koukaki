@@ -83,8 +83,8 @@ get_header();
     </div>
 </section>
 <section id="oscar" class="scroll">
-    <h3 class="oscar__title">Fleurs d’oranger & chats errants<span> est nominé aux Oscars Short</span> Film Animated de 2022 !</h3>
-    <img class="oscar__logo scroll" src="<?php echo get_template_directory_uri() . '/assets/images/Oscar.png';?>">
+    <h3 class="oscar__title">Fleurs d’oranger & chats errants<span> est nominé aux Oscars </span>Short Film Animated de 2022 !</h3>
+    <img class="oscar__logo " src="<?php echo get_template_directory_uri() . '/assets/images/Oscar.png';?>">
 </section>
 </main><!-- #main -->
 

@@ -7,13 +7,12 @@ $header-height: 60px;
 $menu-item-font-size: 64px;
 
 $cloud-animation: travel 8s ease-in-out forwards;
-$cloud-animation-delay: 2s;
+$cloud-animation-delay: 1s;
 $cloud-blur: blur(10px);
 $cloud-size-big: 316px 122px;
 $cloud-size-little: 142px 55px;
 
-$FadeInUp:fadeInUp 1s ease-out forwards;
-
+$fade-in-up: fadeInUp 1s ease-out forwards;
 
 // Keyframes
 @keyframes fadeIn {
@@ -29,19 +28,15 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(-400px);
   }
 }
 
 @keyframes float {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-10px);
   }
@@ -51,7 +46,6 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -62,36 +56,22 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
     opacity: 0;
     transform: translateY(50%);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-@keyframes fadeUpRotation {
-  from {
-    transform: rotate(0deg) translateY(300px);
-  }
-
-  to {
-    transform: rotate(360deg) translateY(0);
-  }
-}
-
 
 @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-50%);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 
 @keyframes slideUp {
   from {
@@ -103,18 +83,6 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
     transform: translateY(0);
   }
 }
-
-@keyframes slideDown {
-  from {
-    
-    transform: translateY(-100%);
-  }
-  to {
-    
-    transform: translateY(0);
-  }
-}
-
 
 // Mixins
 @mixin flex-center {
@@ -138,76 +106,67 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
   animation: $cloud-animation;
 }
 
-// General animations
-.scroll.active::before,.scroll.active::after {
-  animation: $FadeInUp,rotation 5s linear infinite;
-  animation-delay: 0s,1s;
-}
-
-.scroll{
+// General Animations
+.scroll {
   opacity: 0;
+
+  &.active {
+    opacity: 1;
+
+    &::before, &::after {
+      animation: $fade-in-up, rotation 5s linear infinite;
+      animation-delay: 0s, 1s;
+    }
+
+    span {
+      opacity: 0;
+      display: inline-block;
+      position: relative;
+      transition: transform 2s ease-out, opacity 2s ease-out;
+      animation: slideUp 0.5s ease-out forwards;
+
+      &:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+    }
+  }
 }
-
-.scroll.active {
-  opacity: 1;
-  span {
-    opacity: 0;
-    display: inline-block;
-    position: relative;
-    transition: transform 2s ease-out, opacity 2s ease-out;
-  }
-
-  & span {
-    animation: slideUp 0.5s ease-out forwards;
-  }
-
-  & span:nth-child(2) {
-    animation-delay: 0.25s; /* Ajustez le délai selon vos besoins */
-  }
-}
-
-
 
 #place.scroll.active::before,
 #characters.scroll.active,
 .story__title.scroll.active::before,
 .story__article.scroll.active::before,
-.site-footer.scroll.active
-{
-  animation: $FadeInUp;
+.site-footer.scroll.active {
+  animation: $fade-in-up;
 }
 
-.place.scroll.active::before,.place.scroll.active::after{
+.place.scroll.active::before, .place.scroll.active::after {
   animation: $cloud-animation;
   animation-delay: $cloud-animation-delay;
 }
 
-.fadeInUp.scroll.active{
-  animation: $FadeInUp;
+.fadeInUp.scroll.active {
+  animation: $fade-in-up;
   animation-delay: 1s;
+  opacity: 0;
 }
 
 .banner.scroll.active {
   animation: fadeInDown 1s ease-out forwards;
-
-.image{
-    opacity: 0;
-  }
+}
 
 #background-video {
-    width: 100%;
-    max-width: 1440px;
-    height: 806px;
-    margin: 0 auto;
-    object-fit: cover;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-    
-  }
+  width: 100%;
+  max-width: 1440px;
+  height: 806px;
+  margin: 0 auto;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 // Header
@@ -219,14 +178,13 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
   z-index: 30;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
-  .header__inner {
+  &__inner {
     margin: 0 auto;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
     padding: 10px 20px;
     height: $header-height;
     @include flex-center;
+    justify-content: space-between;
   }
 
   &__content {
@@ -242,8 +200,7 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
       color: $text-color;
       font-size: 24px;
 
-      &::before,
-      &::after {
+      &::before, &::after {
         content: '';
         position: absolute;
         width: 20px;
@@ -314,8 +271,7 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
       max-width: 150px;
       position: relative;
 
-      &::before,
-      &::after {
+      &::before, &::after {
         content: '';
         position: absolute;
         width: 20px;
@@ -347,9 +303,7 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
         position: relative;
         font-size: $menu-item-font-size;
 
-
-        &::before,
-        &::after {
+        &::before, &::after {
           content: '';
           position: absolute;
           background-size: contain;
@@ -444,14 +398,13 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
 // Swiper
 .main-characters {
   background-image: url('./assets/images/orange_place_bg.png');
-
 }
 
 #characters {
   font-size: 20px;
 
-  .swiper-container{
-    overflow: hidden ;
+  .swiper-container {
+    overflow: hidden;
   }
 
   div {
@@ -468,50 +421,15 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
     flex: 1;
     flex-direction: row;
     flex-wrap: nowrap;
-    
   }
 }
-
-#oscar {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  height: 563px;
-
-  &::before {
-    content: url('./assets/images/Sunflower.png');
-    left: 4em;
-    top: -1em;
-  }
-
-  &::after {
-    content: url('./assets/images/orchid.png');
-    right: -4em;
-    bottom: 7.8em;
-  }
-
-  .oscar__title {
-    background-image: url('./assets/images/orange_place_bg.png');
-    width: 643px;
-    height: 187px;
-    font-size: 42px;
-    font-weight: 700;
-    padding: 0;
-  }
-
-  .oscar__logo {
-    width: 278px;
-    height: 129px;
-  }
-}
-
 
 #place {
   background-image: none !important;
   position: relative;
   overflow: hidden;
- &::before{
+
+  &::before {
     content: '';
     position: absolute;
     background-image: url('./assets/images/place_bg.png');
@@ -520,13 +438,13 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
     min-height: 699px;
     background-size: cover;
     overflow: hidden;
-    z-index: -100;} 
+    z-index: -100;
+  }
+
   h3 {
-    &::before,
-    &::after {
+    &::before, &::after {
       position: absolute;
       filter: blur(10px);
-      
     }
 
     &::before {
@@ -544,13 +462,45 @@ $FadeInUp:fadeInUp 1s ease-out forwards;
       height: 55px;
     }
   }
- 
 }
 
 #studio div {
-    z-index: 10;
-    position: relative;
-    &::before {
-      top: 0;
-    }
+  z-index: 10;
+  position: relative;
+
+  &::before {
+    top: 0;
   }
+}
+
+#oscar {
+  display: flex;
+  flex-flow:row nowrap;
+  height: 563px;
+  align-items: center;
+  justify-content: space-between;
+
+  &::before {
+    content: url('./assets/images/Sunflower.png');
+    left: 4em;
+    top: -1em;
+  }
+
+  &::after {
+    content: url('./assets/images/orchid.png');
+    right: -4em;
+    bottom: 7.8em;
+  }
+
+  .oscar__title {
+    background-image: url('./assets/images/Rectangle.png');
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.84px;
+  }
+
+  .oscar__logo {
+    width: 278px;
+    height: 129px;
+  }
+}
