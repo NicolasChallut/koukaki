@@ -13,7 +13,7 @@
 <div id="page" class="site-main">
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'foce' ); ?></a>
 
-    <header class="header">
+    <header id="header" class="header">
     <div class="header__content">
         <h1 class="header__title">Fleurs d’oranger & chats errants</h1>
         
@@ -32,6 +32,7 @@
             <li><a href="#characters">Personnages</a></li>
             <li><a href="#place">Lieu</a></li>
             <li><a href="#studio">Studio Koukaki</a></li>
+            <li><img class="nav__logo" src="<?php echo get_template_directory_uri() . '/assets/images/studio_koukaki.png'; ?>"</li>
         </ul>
     </nav>
 </header>

@@ -29,7 +29,7 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
     transform: translateX(0);
   }
   to {
-    transform: translateX(-400px);
+    transform: translateX(-300px);
   }
 }
 
@@ -118,18 +118,21 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
       animation-delay: 0s, 1s;
     }
 
-    span {
-      opacity: 0;
-      display: inline-block;
-      position: relative;
-      transition: transform 2s ease-out, opacity 2s ease-out;
-      animation: slideUp 0.5s ease-out forwards;
-
-      &:nth-child(2) {
-        animation-delay: 0.25s;
-      }
+    
     }
   }
+
+h2.scroll.active{
+  span {
+    opacity: 0;
+    display: inline-block;
+    position: relative;
+    animation: slideUp 0.5s ease-out forwards;
+
+    &:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+}
 }
 
 #place.scroll.active::before,
@@ -141,8 +144,8 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
 }
 
 .place.scroll.active::before, .place.scroll.active::after {
-  animation: $cloud-animation;
-  animation-delay: $cloud-animation-delay;
+  animation:$fade-in-up, $cloud-animation;
+  animation-delay:0s, $cloud-animation-delay;
 }
 
 .fadeInUp.scroll.active {
@@ -169,6 +172,9 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
   z-index: -1;
 }
 
+#primary{
+  overflow: hidden;
+}
 // Header
 .header {
   position: fixed;
@@ -227,12 +233,13 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
     .burger__line {
       display: block;
       width: 100%;
-      height: 1px;
+      height: 2px;
       background: $text-color;
       @include transition(all, 0.3s, ease);
     }
 
     &.active {
+    
       .burger__line:nth-child(1) {
         transform: rotate(45deg) translate(7px, 5px);
       }
@@ -264,6 +271,10 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
 
     &.active {
       transform: translateX(0);
+      overflow: hidden;
+    width: 1440px;
+    position: sticky;
+    
     }
 
     .nav__logo {
@@ -313,8 +324,19 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
 
         // Images for each menu item
         &:nth-child(1) {
+          &::before{
+            background-image: url('./assets/images/orchid.png');
+            animation: rotation 5s linear infinite;
+            width: 172.567px;
+            height: 168.237px;
+            left:-8em;
+            top:1em;
+
+          }
+        }
+        &:nth-child(2) {
           &::before {
-            left: -80px;
+            left: -90px;
             width: 109.222px;
             height: 98.633px;
             background-image: url('./assets/images/blue_cat.png');
@@ -331,9 +353,9 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
           }
         }
 
-        &:nth-child(2) {
+        &:nth-child(3) {
           &::after {
-            right: -278px;
+            right: -480px;
             width: 75.754px;
             height: 74.534px;
             background-image: url('./assets/images/random_flower.png');
@@ -341,7 +363,7 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
           }
         }
 
-        &:nth-child(3) {
+        &:nth-child(4) {
           &::before {
             left: -130px;
             width: 70.762px;
@@ -359,20 +381,25 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
           }
         }
 
-        &:nth-child(4) {
+        
+
+        
+
+        &:nth-child(6) {
+          margin-top: 177px;
+
           &::before {
-            left: -200px;
+            left: -300px;
+            bottom: 80px;
             width: 105.914px;
             height: 95.646px;
             background-image: url('./assets/images/orange_cat.png');
             animation: float 3s ease-in-out infinite;
           }
-        }
 
-        &:nth-child(5) {
           &::after {
-            right: -8em;
-            bottom: -8em;
+            right: -12em;
+            bottom: -5em;
             background-image: url('./assets/images/Hibiscus.png');
             animation: rotation 5s linear infinite;
             width: 626.005px;
@@ -442,6 +469,7 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
   }
 
   h3 {
+    animation:$fade-in-up;
     &::before, &::after {
       position: absolute;
       filter: blur(10px);
@@ -449,7 +477,7 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
 
     &::before {
       content: url('./assets/images/big_cloud.png');
-      top: 1.5em;
+      top: -2.5em;
       left: 22.5em;
       width: 316px;
       height: 122px;
@@ -470,6 +498,7 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
 
   &::before {
     top: 0;
+    animation: $fade-in-up;
   }
 }
 
@@ -479,17 +508,20 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
   height: 563px;
   align-items: center;
   justify-content: space-between;
+  animation: $fade-in-up;
 
   &::before {
     content: url('./assets/images/Sunflower.png');
-    left: 4em;
-    top: -1em;
+    left: 8em;
+    top: -8em;
+    position: relative;
   }
 
   &::after {
     content: url('./assets/images/orchid.png');
     right: -4em;
-    bottom: 7.8em;
+    bottom: 15em;
+    position: relative;
   }
 
   .oscar__title {
