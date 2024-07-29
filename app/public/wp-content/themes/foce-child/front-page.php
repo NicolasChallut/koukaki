@@ -5,14 +5,14 @@ get_header();
 <main id="primary" class="site-main">
 
 <section class="banner scroll">
-    <img class="image  fadeInUp scroll" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
+    <img class="image  fadeInUp scroll" src="<?php echo get_stylesheet_directory_uri() . '/sass/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants">
     <video 
     id="background-video"
     class="hidden"  
     loop 
     muted  
     alt="vidéo d'animation démonstrative"
-    src="<?php echo get_template_directory_uri() . '/assets/images/video.mp4'; ?>"
+    src="<?php echo get_stylesheet_directory_uri() . '/sass/assets/video.mp4'; ?>"
     >
 </section>
 
@@ -84,7 +84,7 @@ get_header();
 </section>
 <section id="oscar" class="scroll">
     <h3 class="oscar__title">Fleurs d’oranger & chats errants<span> est nominé aux Oscars </span>Short Film Animated de 2022 !</h3>
-    <img class="oscar__logo " src="<?php echo get_template_directory_uri() . '/assets/images/Oscar.png';?>">
+    <img class="oscar__logo " src="<?php echo get_stylesheet_directory_uri() . '/sass/assets/images/oscar.png'; ?>">
 </section>
 </main><!-- #main -->
 

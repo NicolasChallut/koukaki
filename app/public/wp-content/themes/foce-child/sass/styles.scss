@@ -123,6 +123,7 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
   }
 
 h2.scroll.active{
+
   span {
     opacity: 0;
     display: inline-block;
@@ -492,13 +493,18 @@ h2.scroll.active{
   }
 }
 
-#studio div {
-  z-index: 10;
-  position: relative;
-
-  &::before {
-    top: 0;
-    animation: $fade-in-up;
+#studio {
+  h2{
+    background-image: url(./assets/images/purple_studio_bg.png);
+  }
+  div {
+    z-index: 10;
+    position: relative;
+  
+    &::before {
+      top: 0;
+      animation: $fade-in-up;
+    }
   }
 }
 
@@ -534,5 +540,15 @@ h2.scroll.active{
   .oscar__logo {
     width: 278px;
     height: 129px;
+  }
+}
+
+#colophon{
+  ul::after{
+    content: url(./assets/images/hibiscus_footer.png);
+    position: absolute;
+    left: calc(50% - 323px);
+    bottom: -28.5em;
+    z-index: -1;
   }
 }
