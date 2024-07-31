@@ -37,9 +37,9 @@ get_header();
     
     <article id="characters" class=" scroll">
         
-                
-                <div class="swiper-container">
                 <h3 class="">Les personnages</h3> 
+                <div class="swiper-container">
+                
                 <div class="swiper-wrapper">
                     
                     <?php

@@ -84,6 +84,26 @@ $fade-in-up: fadeInUp 1s ease-out forwards;
   }
 }
 
+//responsive
+@media (max-width: 1439px){
+#oscar {
+  flex-direction: column !important;
+  &::before{
+    left: -25em !important;
+    top: 7em !important;
+  }
+
+  &::after{
+    left:21em;
+    bottom:12em;
+  }
+}
+}
+@media (max-width: 768px) {
+  #background-video {
+      display: none;
+  }
+}
 // Mixins
 @mixin flex-center {
   display: flex;
@@ -264,7 +284,7 @@ h2.scroll.active{
     background: $menu-bg-color;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     transform: translateX(-100%);
     @include transition(transform, 0.3s, ease);
@@ -273,7 +293,7 @@ h2.scroll.active{
     &.active {
       transform: translateX(0);
       overflow: hidden;
-    width: 1440px;
+    height: 100%;
     position: sticky;
     
     }
@@ -430,13 +450,21 @@ h2.scroll.active{
 
 #characters {
   font-size: 20px;
+  flex-direction: column;
+  max-width: 1440px;
+  width: 100%;
 
   .swiper-container {
     overflow: hidden;
-  }
-
-  div {
-    width: 1440px;
+    text-align: center;
+            font-size: 18px;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
   }
 
   h3 {
@@ -446,7 +474,6 @@ h2.scroll.active{
 
   .swiper-wrapper {
     display: flex;
-    flex: 1;
     flex-direction: row;
     flex-wrap: nowrap;
   }
@@ -535,6 +562,9 @@ h2.scroll.active{
     font-size: 42px;
     font-weight: 700;
     letter-spacing: -0.84px;
+    width: 834px;
+    height: 273px;
+    animation: $fade-in-up;
   }
 
   .oscar__logo {

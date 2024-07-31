@@ -18,5 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
       centeredSlides: true,
       grabCursor: true,
     });
+    
   });
+  
   

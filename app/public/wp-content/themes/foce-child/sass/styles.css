@@ -60,6 +60,24 @@
     transform: translateY(0);
   }
 }
+@media (max-width: 1439px) {
+  #oscar {
+    flex-direction: column !important;
+  }
+  #oscar::before {
+    left: -25em !important;
+    top: 7em !important;
+  }
+  #oscar::after {
+    left: 21em;
+    bottom: 12em;
+  }
+}
+@media (max-width: 768px) {
+  #background-video {
+    display: none;
+  }
+}
 .scroll {
   opacity: 0;
 }
@@ -200,7 +218,7 @@ h2.scroll.active span:nth-child(2) {
   background: #FFF5E9;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
@@ -209,7 +227,7 @@ h2.scroll.active span:nth-child(2) {
 .header__nav.active {
   transform: translateX(0);
   overflow: hidden;
-  width: 1440px;
+  height: 100%;
   position: sticky;
 }
 .header__nav .nav__logo {
@@ -331,12 +349,18 @@ h2.scroll.active span:nth-child(2) {
 
 #characters {
   font-size: 20px;
+  flex-direction: column;
+  max-width: 1440px;
+  width: 100%;
 }
 #characters .swiper-container {
   overflow: hidden;
-}
-#characters div {
-  width: 1440px;
+  text-align: center;
+  font-size: 18px;
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 #characters h3 {
   text-align: left;
@@ -344,7 +368,6 @@ h2.scroll.active span:nth-child(2) {
 }
 #characters .swiper-wrapper {
   display: flex;
-  flex: 1;
   flex-direction: row;
   flex-wrap: nowrap;
 }
@@ -423,6 +446,9 @@ h2.scroll.active span:nth-child(2) {
   font-size: 42px;
   font-weight: 700;
   letter-spacing: -0.84px;
+  width: 834px;
+  height: 273px;
+  animation: fadeInUp 1s ease-out forwards;
 }
 #oscar .oscar__logo {
   width: 278px;

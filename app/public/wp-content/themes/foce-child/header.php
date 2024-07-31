@@ -18,10 +18,12 @@
         <h1 class="header__title">Fleurs d’oranger & chats errants</h1>
         
         <button class="header__burger" aria-label="Menu Burger">
+
         <span class="burger__line"></span>
         <span class="burger__line"></span>
         <span class="burger__line"></span>
-    </button>
+        
+        </button>
     </div>
     
     <nav class="header__nav">
